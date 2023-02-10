@@ -1,0 +1,7 @@
+dev:
+  redis:
+    image: docker.io/bitnami/redis:7.0
+    command: bash
+    sync:
+      - .:/opt/okteto/app
+  
