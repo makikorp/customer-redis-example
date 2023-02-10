@@ -1,6 +1,13 @@
+build:
+  redis:
+    context: makikorp
+
+deploy:
+  compose: docker-compose.yml
+
 dev:
   redis:
-    image: docker.io/bitnami/redis:7.0
+    #image: docker.io/bitnami/redis:7.0
     command: bash
     sync:
       - .:/opt/okteto/app
