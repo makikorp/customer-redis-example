@@ -1,6 +1,6 @@
 build:
   redis:
-    context: makikorp
+    context: .
 
 deploy:
   compose: docker-compose.yml
