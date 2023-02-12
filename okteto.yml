@@ -7,8 +7,12 @@ deploy:
 
 dev:
   redis:
-    #image: docker.io/bitnami/redis:7.0
+    #image: docker.io/bitnami/redis:6.2.10
     command: bash
+    persistentVolume:
+      enabled: true
+      storageClass: standard
+      size: 1Gi
     sync:
       - .:/opt/okteto/app
   
