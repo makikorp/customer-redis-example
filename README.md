@@ -19,8 +19,8 @@ Thank you for contacting Okteto Technical Support.  I am sorry to learn about yo
 
 To help us understand what is happening, please provide us with the following information:
 
--log files when running okteto up
--the okteto.yml manifest file
+-log files when running okteto up,
+-the okteto.yml manifest file,
 -the docker-compose.yml file
 
 Once I receive the above information, I will review the files and provide an update.
@@ -37,10 +37,10 @@ My initial steps after responding to the email are as follows:
 1-Fork the repository provided by the customer
 
 2-create the required files
--create a docker-compose.yml to run redis
+-create a docker-compose.yml
 -create a okteto.yml manifest
 
-3-run okteto up with the okteto cli or using the ui
+3-run okteto up using the okteto cli
 4-check for any error messages
 5-connect to the kubernetes cluster using the Kubernetes Credentials feature under the "Setting" tab 
 6-kubectl get pods -n makikorp 
