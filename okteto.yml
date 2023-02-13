@@ -11,7 +11,7 @@ dev:
     command: bash
     persistentVolume:
       enabled: true
-      storageClass: default
+      #storageClass: standard
       size: 1Gi
     sync:
       - .:/opt/okteto/app
