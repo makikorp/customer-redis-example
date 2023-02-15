@@ -2,7 +2,8 @@ version: '2'
 
 services:
   redis:
-    image: "redis:6.0.17"
+    image: 'redis:6.0.17'
+    command: redis-server
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
@@ -10,7 +11,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - 'redis_data:/redis/redis/data'
+      - 'redis_data:/redis/data'
 
 volumes:
   redis_data:
