@@ -7,8 +7,8 @@ deploy:
 
 dev:
   redis:
-    #image: docker.io/bitnami/redis:6.2.10
-    command: bash
+    image: redis:6.0.17
+    command: redis-server
     persistentVolume:
       enabled: true
       #storageClass: standard
