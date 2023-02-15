@@ -1,9 +1,22 @@
 version: '3'
 
 services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL: redis:6379
+
+
   redis:
-    #image: 'docker.io/redis:6.0.17'
-    image: 'docker.io/redis:latest'
+    image: 'docker.io/bitnami/redis:6.2.10'
+    #image: 'docker.io/redis:latest'
     command: redis-server
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
@@ -12,8 +25,10 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - 'redis_data:/redis/data'
+      - redis:/bitnami/data
 
 volumes:
-  redis_data:
+  redis:
+    driver_opts:
+      size: 1Gi
     #driver: local

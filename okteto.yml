@@ -1,0 +1,53 @@
+name: customer-redis-example
+
+# The build section defines how to build the images of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#build
+build:
+
+  # You can use the following env vars to refer to this image in your deploy commands:
+  #  - OKTETO_BUILD_APP_REGISTRY: image registry
+  #  - OKTETO_BUILD_APP_REPOSITORY: image repo
+  #  - OKTETO_BUILD_APP_IMAGE: image name
+  #  - OKTETO_BUILD_APP_SHA: image tag sha256
+  app:
+    context: .
+    dockerfile: Dockerfile
+
+# The deploy section defines how to deploy your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#deploy
+deploy:
+  compose:
+    file: docker-compose.yml
+    services:
+      - app
+      - redis
+
+# The dependencies section defines other git repositories to be deployed as part of your development environment
+# More info: https://www.okteto.com/docs/reference/manifest/#dependencies
+# dependencies:
+#   - https://github.com/okteto/sample
+
+
+# The dev section defines how to activate a development container
+# More info: https://www.okteto.com/docs/reference/manifest/#dev
+dev:
+  app:
+    image: okteto/golang:1
+    command: bash
+    workdir: /app
+    persistentVolume:
+      enabled: true
+      size: 1Gi
+    securityContext:
+      capabilities:
+        add:
+          - SYS_PTRACE
+    sync:
+      - .:/app
+    forward:
+      - 2345:2345
+      - 8080:8080
+    volumes:
+      - /go/pkg/
+      - /root/.cache/go-build/
+
