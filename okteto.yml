@@ -7,7 +7,7 @@ deploy:
 
 dev:
   redis:
-    image: redis:alpine
+    image: redis:latest
     command: bash
     persistentVolume:
       enabled: true

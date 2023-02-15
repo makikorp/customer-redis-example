@@ -3,7 +3,7 @@ version: '3'
 services:
   redis:
     #image: 'docker.io/redis:6.0.17'
-    image: 'redis:alpine'
+    image: 'docker.io/redis:latest'
     command: redis-server
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
