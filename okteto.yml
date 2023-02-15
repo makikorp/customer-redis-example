@@ -8,7 +8,7 @@ deploy:
 dev:
   redis:
     image: redis:6.0.17
-    command: redis-server
+    command: bash
     persistentVolume:
       enabled: true
       #storageClass: standard
