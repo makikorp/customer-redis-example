@@ -12,12 +12,15 @@ services:
       - redis
     environment:
       REDIS_URL: redis:6379
+    volumes:
+      - /go/pkg/
+      - /root/.cache/go-build/
 
 
   redis:
     image: 'docker.io/bitnami/redis:6.2.10'
     #image: 'docker.io/redis:latest'
-    command: redis-server
+    command: redis-server --protected-mode no
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
@@ -28,6 +31,9 @@ services:
       - redis:/bitnami/data
 
 volumes:
+  app:
+    driver_opts:
+      size: 1Gi
   redis:
     driver_opts:
       size: 1Gi

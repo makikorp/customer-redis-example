@@ -34,10 +34,10 @@ dev:
   app:
     image: okteto/golang:1
     command: bash
+    #persistentVolume:
+    #  enabled: true
+    #  size: 1Gi
     workdir: /app
-    persistentVolume:
-      enabled: true
-      size: 1Gi
     securityContext:
       capabilities:
         add:
